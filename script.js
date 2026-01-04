@@ -54,7 +54,7 @@ if (form) {
     const pkgName = document.getElementById("selectedPackage").value;
     const msg = document.getElementById("message").value;
 
-    const whatsappNumber = "919906733155";
+    const whatsappNumber = "+917006192778";
 
     const text =
       `Hello Wasturwan Travels,%0A%0A` +
