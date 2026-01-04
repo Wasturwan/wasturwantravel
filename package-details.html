@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Package Details | Wasturwan Travels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <h1>Wasturwan Travels</h1>
+  </nav>
+</header>
+
+<section class="package-detail">
+  <h2 id="packageTitle">Kashmir Tour Package</h2>
+
+  <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
+  <p><strong>Price:</strong> ₹24,999 / Couple</p>
+
+  <h3>Package Includes</h3>
+  <ul>
+    <li>Hotel + Houseboat stay</li>
+    <li>Daily breakfast & dinner</li>
+    <li>Private cab with driver</li>
+    <li>1 Hour Shikara Ride (Free)</li>
+  </ul>
+
+  <button class="btn" id="openBooking">Book This Package</button>
+</section>
+
+<!-- BOOKING POPUP -->
+<div id="babe_overlay"></div>
+
+<div id="babe_overlay_container">
+  <div class="babe_overlay_inner">
+    <button class="close" id="closePopup">&times;</button>
+
+    <h1>Book Package</h1>
+
+    <form id="bookingForm">
+      <input type="hidden" id="selectedPackage">
+
+      <input type="text" id="name" placeholder="Your Name" required><br><br>
+      <input type="tel" id="phone" placeholder="Phone Number" required><br><br>
+      <input type="date" id="date" required><br><br>
+
+      <textarea id="message" placeholder="Special Request"></textarea><br><br>
+
+      <button type="submit" class="purchase-success-button">
+        Send to WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
