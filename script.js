@@ -1,5 +1,5 @@
 // Initialize EmailJS
-emailjs.init('your_public_key'); // Replace with your EmailJS public key
+emailjs.init('JNQwsCJ1uDonQIMob'); // Replace with your EmailJS public key
 
 // Initialize AOS
 AOS.init({
