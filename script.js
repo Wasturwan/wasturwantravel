@@ -1,110 +1,112 @@
-// Mobile menu
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+// Initialize EmailJS
+emailjs.init('your_public_key'); // Replace with your EmailJS public key
 
-hamburger.onclick = () => {
-  navLinks.classList.toggle("hidden");
-};
-
-// Booking modal
-const modal = document.getElementById("bookingModal");
-const closeModal = document.getElementById("closeModal");
-const selectedPackage = document.getElementById("selectedPackage");
-
-document.querySelectorAll(".openBooking").forEach(btn => {
-  btn.onclick = () => {
-    selectedPackage.value = btn.dataset.package;
-    modal.classList.remove("hidden");
-    modal.setAttribute("aria-hidden", "false");
-  };
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  once: true,
 });
 
-closeModal.onclick = () => {
-  modal.classList.add("hidden");
-  modal.setAttribute("aria-hidden", "true");
-};
+// Initialize Swiper
+const swiper = new Swiper('.hero-slider', {
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
 
-modal.onclick = e => {
-  if (e.target === modal) {
-    modal.classList.add("hidden");
-    modal.setAttribute("aria-hidden", "true");
-  }
-};
-
-// WhatsApp auto-message
-document.getElementById("bookingForm").onsubmit = e => {
-  e.preventDefault();
-
-  const nameField = document.getElementById("name");
-  const phoneField = document.getElementById("phone");
-  const dateField = document.getElementById("date");
-  const messageField = document.getElementById("message");
-  const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
-
-  const text = `
-Hello Wasturwan Travels 👋
-
-📦 Package: ${selectedPackage.value}
-👤 Name: ${nameField.value}
-📞 Phone: ${phoneField.value}
-📅 Travel Date: ${dateField.value}
-📝 Message: ${messageField.value || "N/A"}
-
-Please guide me further.
-`;
-
-  if (contactMethod === 'whatsapp') {
-    const url = `https://wa.me/917006594976?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
-  } else {
-    // Open Gmail compose with pre-filled details
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=wasturwantravels@gmail.com&su=Booking%20Inquiry&body=${encodeURIComponent(text)}`;
-    window.open(gmailUrl, "_blank");
-  }
-
-  modal.classList.add("hidden");
-};
-
-// Scroll reveal animations
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in-view");
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-// Slider functionality
-const slider = document.querySelector('.slider');
-if (slider) {
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  let currentIndex = 0;
-  const totalSlides = document.querySelectorAll('.slide').length;
-
-  function updateSlider() {
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateSlider();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateSlider();
-  });
+// Modal functions
+function openBooking() {
+  const modal = document.getElementById("bookingModal");
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
-// DevTools deterrent (basic)
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("keydown", e => {
-  if (
-    e.key === "F12" ||
-    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
-    (e.ctrlKey && e.key === "U")
-  ) e.preventDefault();
+function closeBooking() {
+  const modal = document.getElementById("bookingModal");
+  modal.classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+// Close modal on outside click
+window.onclick = function(event) {
+  const modal = document.getElementById("bookingModal");
+  if (event.target == modal) {
+    closeBooking();
+  }
+}
+
+// Smooth scrolling for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
 });
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if (window.scrollY > 100) {
+    header.style.background = 'rgba(255, 255, 255, 0.98)';
+    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+  } else {
+    header.style.background = 'rgba(255, 255, 255, 0.95)';
+    header.style.boxShadow = 'none';
+  }
+});
+
+// Form submission functions
+function sendViaEmail() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const destination = document.getElementById('destination').value;
+  const message = document.getElementById('message').value;
+
+  // EmailJS parameters - Replace with your actual IDs
+  const serviceID = 'your_service_id'; // Replace with your EmailJS service ID
+  const templateID = 'your_template_id'; // Replace with your EmailJS template ID
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    destination: destination,
+    message: message,
+    to_email: 'wasturwantravels@gmail.com' // Replace with your email
+  };
+
+  emailjs.send(serviceID, templateID, templateParams)
+    .then(function(response) {
+      alert('Email sent successfully!');
+      closeBooking(); // Close modal after sending
+    }, function(error) {
+      alert('Failed to send email. Please try again.');
+      console.error('EmailJS error:', error);
+    });
+}
+
+function sendViaWhatsApp() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const destination = document.getElementById('destination').value;
+  const message = document.getElementById('message').value;
+
+  const whatsappMessage = `Booking Request:\nName: ${name}\nEmail: ${email}\nDestination: ${destination}\nMessage: ${message}`;
+  const whatsappLink = `https://wa.me/917006594976?text=${encodeURIComponent(whatsappMessage)}`;
+  window.open(whatsappLink, '_blank');
+}
