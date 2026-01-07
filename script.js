@@ -1,5 +1,5 @@
 // Initialize EmailJS
-emailjs.init('RPuODtzx4oLJPXBR3'); // Replace with your EmailJS public key
+emailjs.init("RPuODtzx4oLJPXBR3"); // Replace with your EmailJS public key
 
 // Initialize AOS
 AOS.init({
@@ -79,8 +79,8 @@ function sendViaEmail() {
   const message = document.getElementById('message').value;
 
   // EmailJS parameters - Replace with your actual IDs
-  const serviceID = 'service_7wpca56'; // Replace with your EmailJS service ID
-  const templateID = 'template_4525ddd'; // Replace with your EmailJS template ID
+  const serviceID = "service_7wpca56"; // Replace with your EmailJS service ID
+  const templateID = "template_4525ddd"; // Replace with your EmailJS template ID
 
   const templateParams = {
     from_name: name,
