@@ -80,7 +80,7 @@ function sendViaEmail() {
 
   // EmailJS parameters - Replace with your actual IDs
   const serviceID = 'service_7wpca56'; // Replace with your EmailJS service ID
-  const templateID = 'template_xa4ky9q'; // Replace with your EmailJS template ID
+  const templateID = 'template_4525ddd'; // Replace with your EmailJS template ID
 
   const templateParams = {
     from_name: name,
