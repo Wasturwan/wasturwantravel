@@ -1,0 +1,75 @@
+🔑 Step 1: Create EmailJS Account
+
+Go to emailjs.com
+
+Sign up / log in (Google works)
+
+📧 Step 2: Add Your Email Service
+
+Dashboard → Email Services
+
+Click “Add New Service”
+
+Choose Gmail (or Outlook, etc.)
+
+Authorize your email
+
+You’ll see a Service ID
+
+service_xxxxxx
+
+
+✅ Copy this (used in emailjs.send())
+
+📝 Step 3: Create Email Template
+
+Go to Email Templates
+
+Click “Create New Template”
+
+Example template:
+
+Subject
+
+New Travel Booking Inquiry
+
+
+Content
+
+Name: {{from_name}}
+Email: {{from_email}}
+Destination: {{destination}}
+
+Message:
+{{message}}
+
+
+Save template
+
+Copy the Template ID
+
+template_xxxxxx
+
+🔐 Step 4: Get Your PUBLIC KEY (Important)
+
+Dashboard → Account
+
+Open API Keys
+
+Copy Public Key
+
+XXXXXXXXXXXXXXXXX
+
+
+This is what you use here 👇
+
+emailjs.init("YOUR_PUBLIC_KEY");
+
+✅ Final Example (Replace with YOUR values)
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("Yk8AbCDeFg123"); // your public key
+</script>
+
+var serviceID = "service_abc123";
+var templateID = "template_xyz789";
