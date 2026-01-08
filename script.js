@@ -93,6 +93,7 @@ function sendViaEmail() {
   emailjs.send(serviceID, templateID, templateParams)
     .then(function(response) {
       alert('Email sent successfully!');
+      document.getElementById('bookingForm').reset(); // Auto reset form
       closeBooking(); // Close modal after sending
     }, function(error) {
       alert('Failed to send email. Please try again.');
