@@ -1,61 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Package Details | Wasturwan Travels</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Package Details | Wasturwan Travels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>Wasturwan Travels</h1>
+        <a
+          href="#about"
+          id="aboutBtn"
+          style="
+            cursor: pointer;
+            margin-left: 20px;
+            text-decoration: none;
+            color: inherit;
+          "
+          >About</a
+        >
+      </nav>
+    </header>
 
-<header>
-  <nav>
-    <h1>Wasturwan Travels</h1>
-  </nav>
-</header>
+    <section class="package-detail">
+      <h2 id="packageTitle">Kashmir Tour Package</h2>
 
-<section class="package-detail">
-  <h2 id="packageTitle">Kashmir Tour Package</h2>
+      <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
+      <p><strong>Price:</strong> ₹24,999 / Couple</p>
 
-  <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
-  <p><strong>Price:</strong> ₹24,999 / Couple</p>
+      <h3>Package Includes</h3>
+      <ul>
+        <li>Hotel + Houseboat stay</li>
+        <li>Daily breakfast & dinner</li>
+        <li>Private cab with driver</li>
+        <li>1 Hour Shikara Ride (Free)</li>
+      </ul>
 
-  <h3>Package Includes</h3>
-  <ul>
-    <li>Hotel + Houseboat stay</li>
-    <li>Daily breakfast & dinner</li>
-    <li>Private cab with driver</li>
-    <li>1 Hour Shikara Ride (Free)</li>
-  </ul>
+      <button class="btn" id="openBooking">Book This Package</button>
+    </section>
 
-  <button class="btn" id="openBooking">Book This Package</button>
-</section>
+    <!-- BOOKING POPUP -->
+    <div id="babe_overlay"></div>
 
-<!-- BOOKING POPUP -->
-<div id="babe_overlay"></div>
+    <div id="babe_overlay_container">
+      <div class="babe_overlay_inner">
+        <button class="close" id="closePopup">&times;</button>
 
-<div id="babe_overlay_container">
-  <div class="babe_overlay_inner">
-    <button class="close" id="closePopup">&times;</button>
+        <h1>Book Package</h1>
 
-    <h1>Book Package</h1>
+        <form id="bookingForm">
+          <input type="hidden" id="selectedPackage" />
 
-    <form id="bookingForm">
-      <input type="hidden" id="selectedPackage">
+          <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            required
+          /><br /><br />
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            required
+          /><br /><br />
+          <input type="date" id="date" required /><br /><br />
 
-      <input type="text" id="name" placeholder="Your Name" required><br><br>
-      <input type="tel" id="phone" placeholder="Phone Number" required><br><br>
-      <input type="date" id="date" required><br><br>
+          <textarea id="message" placeholder="Special Request"></textarea
+          ><br /><br />
 
-      <textarea id="message" placeholder="Special Request"></textarea><br><br>
+          <button type="submit" class="purchase-success-button">
+            Send to WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
 
-      <button type="submit" class="purchase-success-button">
-        Send to WhatsApp
-      </button>
-    </form>
-  </div>
-</div>
+    <script src="script.js"></script>
+  </body>
+  <footer id="about" style="margin-top: 60px">
+    <div
+      style="background: #222; color: #fff; padding: 32px 0; text-align: center"
+    >
+      <h2>About Wasturwan Travels</h2>
+      <p>
+        Wasturwan Travels is your trusted travel partner for Kashmir and beyond.
+        We offer curated packages, vehicle rentals, and personalized experiences
+        to make your journey memorable.
+      </p>
+      <p>Contact: wasturwantravels@gmail.com | +91 7006594976</p>
+      <p>
+        Address: Ground floor, Pahal Brein, Nishat Road, Srinagar, J&K, Pin:
+        191121
+      </p>
+    </div>
+  </footer>
+  <script>
+    // Smooth scroll for About button
+    document.getElementById("aboutBtn").addEventListener("click", function (e) {
+      e.preventDefault();
+      document
+        .getElementById("about")
+        .scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 
-<script src="script.js"></script>
-</body>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+    // Disable F12, Ctrl+Shift+I/J/C/U, Ctrl+U, Ctrl+S, Ctrl+Shift+C
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey &&
+          e.shiftKey &&
+          (e.key === "I" || e.key === "J" || e.key === "C")) ||
+        (e.ctrlKey && (e.key === "U" || e.key === "S"))
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    });
+  </script>
 </html>
