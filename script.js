@@ -111,3 +111,43 @@ function sendViaWhatsApp() {
   const whatsappLink = `https://wa.me/917006594976?text=${encodeURIComponent(whatsappMessage)}`;
   window.open(whatsappLink, '_blank');
 }
+
+// ---------- Inspect Blocking (non-UI) ----------
+// Prevent right-click context menu across the site
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+});
+
+// Prevent common devtools / view-source / save shortcuts
+document.addEventListener('keydown', function (e) {
+  // F12
+  if (e.key === 'F12' || e.keyCode === 123) {
+    e.preventDefault();
+    return false;
+  }
+
+  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / Ctrl+Shift+K
+  if (e.ctrlKey && e.shiftKey) {
+    const key = (e.key || '').toUpperCase();
+    if (key === 'I' || key === 'J' || key === 'C' || key === 'K') {
+      e.preventDefault();
+      return false;
+    }
+  }
+
+  // Ctrl+U (view-source), Ctrl+S (save), Ctrl+Shift+S
+  if (e.ctrlKey) {
+    const key = (e.key || '').toUpperCase();
+    if (key === 'U' || key === 'S') {
+      e.preventDefault();
+      return false;
+    }
+  }
+});
+
+// Basic protection against text selection/context via mouse
+document.addEventListener('selectstart', function (e) {
+  e.preventDefault();
+});
+
+// Note: These measures make casual inspection harder but cannot fully prevent developer tools access.
