@@ -26,7 +26,12 @@
     <!-- Top Info Bar -->
     <div class="top-info">
       <div class="container">
-        <span>Call us: +91 7006594976</span>
+        <span style="display: flex; align-items: center; gap: 12px;">
+          Call us: +91 7006594976
+          <a href="https://www.instagram.com/mudasir_8907?igsh=MWQ5Z3lsM2UwOXM5ZA==" target="_blank" aria-label="Instagram" style="display: inline-flex; align-items: center; margin-left: 12px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 22px; height: 22px; display: block;" />
+          </a>
+        </span>
         <span>Email: wasturwantravels@gmail.com</span>
       </div>
     </div>
@@ -34,7 +39,12 @@
     <!-- Header -->
     <header class="header">
       <div class="container">
-        <div class="logo">Wasturwan<span>Travels</span></div>
+        <div class="logo" style="display: flex; align-items: center; gap: 14px;">
+          Wasturwan<span>Travels</span>
+          <a href="https://www.instagram.com/mudasir_8907?igsh=MWQ5Z3lsM2UwOXM5ZA==" target="_blank" aria-label="Instagram" style="display: inline-flex; align-items: center; margin-left: 8px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 22px; height: 22px; display: block;" />
+          </a>
+        </div>
         <nav>
           <a href="index.html#home">Home</a>
           <a href="index.html#about">About</a>
@@ -566,5 +576,23 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Disable right-click context menu
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+      // Disable F12, Ctrl+Shift+I/J/C/U, Ctrl+U, Ctrl+S, Ctrl+Shift+C
+      document.addEventListener('keydown', function(e) {
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+          (e.ctrlKey && (e.key === 'U' || e.key === 'S'))
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      });
+    </script>
   </body>
 </html>
