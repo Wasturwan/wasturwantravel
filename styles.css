@@ -1,3 +1,411 @@
+
+/* Adventure CTA features row layout */
+.adventure-features {
+  display: flex;
+  flex-direction: row;
+  /* Floating Social Buttons Container */
+  .floating-social-stack {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;   /* stack vertically */
+    gap: 12px;                /* GAP BETWEEN BUTTONS */
+    z-index: 9999;
+  }
+
+  /* Common button style */
+  .floating-social-stack a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+    background: #fff;
+  }
+
+  .floating-social-stack a:hover {
+    transform: scale(1.1);
+  }
+
+  /* Icon image */
+  .floating-social-stack img {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    .floating-social-stack {
+      bottom: 15px;
+      right: 15px;
+      gap: 10px;
+    }
+
+    .floating-social-stack a {
+      width: 45px;
+      height: 45px;
+    }
+
+    .floating-social-stack img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  list-style: disc inside;
+}
+.accommodation-details li {
+  margin-bottom: 2px;
+}
+
+/* Responsive booking modal */
+.modal-content {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Responsive form fields */
+#bookingForm input, #bookingForm textarea {
+  font-size: 1rem;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#bookingForm button {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* WhatsApp and Instagram floating button responsive */
+/* Floating WhatsApp and Instagram buttons */
+/* Floating WhatsApp and Instagram buttons - improved responsive */
+/* Floating Social Buttons Container */
+.floating-social-stack {
+  position: fixed;
+  z-index: 1000;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.whatsapp-float {
+  width: 56px;
+  height: 56px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+  touch-action: manipulation;
+  pointer-events: auto;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1001;
+}
+.instagram-float {
+  width: 56px;
+  height: 56px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+  touch-action: manipulation;
+  pointer-events: auto;
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  z-index: 1500;
+}
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  box-shadow: none;
+}
+.instagram-float img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  box-shadow: none;
+}
+.whatsapp-float:hover, .instagram-float:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 900px) {
+  .floating-social-stack {
+    right: 14px;
+    bottom: 16px;
+    gap: 14px;
+  }
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    min-width: 40px;
+    min-height: 40px;
+    right: 14px;
+    bottom: 16px;
+  }
+  .instagram-float {
+    width: 48px;
+    height: 48px;
+    min-width: 40px;
+    min-height: 40px;
+    right: 14px;
+    bottom: 76px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .floating-social-stack {
+    right: 8px;
+    bottom: 10px;
+    gap: 10px;
+  }
+  .whatsapp-float {
+    width: 44px;
+    height: 44px;
+    min-width: 36px;
+    min-height: 36px;
+    right: 8px;
+    bottom: 10px;
+  }
+  .instagram-float {
+    width: 44px;
+    height: 44px;
+    min-width: 36px;
+    min-height: 36px;
+    right: 8px;
+    bottom: 60px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (max-width: 400px) {
+  .floating-social-stack {
+    right: 4px;
+    bottom: 6px;
+    gap: 7px;
+  }
+  .whatsapp-float {
+    width: 38px;
+    height: 38px;
+    min-width: 32px;
+    min-height: 32px;
+    right: 4px;
+    bottom: 6px;
+  }
+  .instagram-float {
+    width: 38px;
+    height: 38px;
+    min-width: 32px;
+    min-height: 32px;
+    right: 4px;
+    bottom: 46px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 18px;
+    height: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    min-width: 44px;
+    min-height: 44px;
+    right: 10px;
+    bottom: 14px;
+  }
+  .instagram-float {
+    width: 52px;
+    height: 52px;
+    min-width: 44px;
+    min-height: 44px;
+    right: 10px;
+    bottom: 74px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (max-width: 500px) {
+  .whatsapp-float {
+    width: 44px;
+    height: 44px;
+    min-width: 40px;
+    min-height: 40px;
+    right: 6px;
+    bottom: 10px;
+  }
+  .instagram-float {
+    width: 44px;
+    height: 44px;
+    min-width: 40px;
+    min-height: 40px;
+    right: 6px;
+    bottom: 58px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (max-width: 350px) {
+  .whatsapp-float {
+    width: 38px;
+    height: 38px;
+    min-width: 36px;
+    min-height: 36px;
+    right: 3px;
+    bottom: 6px;
+  }
+  .instagram-float {
+    width: 38px;
+    height: 38px;
+    min-width: 36px;
+    min-height: 36px;
+    right: 3px;
+    bottom: 46px;
+  }
+  .whatsapp-float img, .instagram-float img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Responsive navigation */
+@media (max-width: 900px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .logo {
+    margin-bottom: 8px;
+  }
+  nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .logo span {
+    font-size: 1.2rem !important;
+  }
+  .tour-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .promo-content {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo img {
+    height: 28px;
+  }
+  .logo span {
+    font-size: 1rem !important;
+  }
+  .tour-card {
+    padding: 10px;
+  }
+  .modal-content {
+    max-width: 98vw;
+    padding: 10px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .footer-col h4 {
+    font-size: 1.1rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Touch-friendly buttons */
+.btn-primary {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+
+/* Font scaling for mobile */
+@media (max-width: 400px) {
+  html {
+    font-size: 14px;
+  }
+}
 :root {
   --primary: #2563eb;
   --secondary: #1e40af;
