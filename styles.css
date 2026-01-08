@@ -1166,3 +1166,15 @@ body {
   .new-footer-bottom { text-align: left; }
 }
 
+/* Social icon image sizing inside footer */
+.social-icons-row img {
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+}
+
+.follow-us h4 { color: #e6eef8; margin: 0; }
+
+
