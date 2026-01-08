@@ -518,6 +518,17 @@ body {
   color: var(--text);
 }
 
+.footer a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--primary);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 20px;
@@ -672,4 +683,49 @@ body {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Cancellation Policy Page */
+.page-content {
+  padding: 100px 0 50px;
+}
+
+.content-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.policy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.policy-table th, .policy-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.policy-table th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+
+.policy-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.breadcrumb {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
