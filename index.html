@@ -34,7 +34,28 @@
     <!-- Header -->
     <header class="header">
       <div class="container">
-        <div class="logo">Wasturwan<span>Travels</span></div>
+        <div class="logo" style="display: flex; align-items: center; gap: 10px">
+          <img
+            src="images/Logo.JPEG"
+            alt="Wasturwan Travels Logo"
+            style="
+              height: 38px;
+              width: auto;
+              object-fit: contain;
+              vertical-align: middle;
+            "
+          />
+          <span
+            style="
+              display: flex;
+              align-items: center;
+              font-size: 1.7rem;
+              font-weight: 700;
+              font-family: inherit;
+            "
+            >Wasturwan<span>Travels</span></span
+          >
+        </div>
         <nav>
           <a href="#home">Home</a>
           <a href="#about">About</a>
@@ -103,7 +124,9 @@
             >
               <div class="hero-overlay"></div>
               <div class="hero-content">
-                <h1 data-aos="fade-up" data-aos-delay="200">Your Journey Begins Here</h1>
+                <h1 data-aos="fade-up" data-aos-delay="200">
+                  Your Journey Begins Here
+                </h1>
                 <p data-aos="fade-up" data-aos-delay="400">
                   Create unforgettable moments
                 </p>
@@ -223,9 +246,10 @@
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">Most Popular Tours</h2>
         <div class="tour-grid">
+          <!-- Srinagar to Srinagar -->
           <div class="tour-card" data-aos="fade-up" data-aos-delay="200">
             <div class="tour-image">
-              <img src="images/Ladakh.jpeg" alt="Tour" />
+              <img src="images/1767803358391.jpeg" alt="Tour" />
               <span class="featured">Featured</span>
             </div>
             <div class="tour-content">
@@ -242,10 +266,16 @@
                 <span>5 Days / 4 Nights</span>
                 <span>₹24,999 per couple</span>
               </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
               <p>Shikara ride 1 hour included</p>
               <a class="btn-primary" onclick="openBooking()">Book Now</a>
             </div>
           </div>
+          <!-- Jammu to Jammu -->
           <div class="tour-card" data-aos="fade-up" data-aos-delay="300">
             <div class="tour-image">
               <img src="images/Leh.jpeg" alt="Tour" />
@@ -265,10 +295,16 @@
                 <span>6 Days / 5 Nights</span>
                 <span>₹32,999 per couple</span>
               </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
               <p>Shikara ride 1 hour included</p>
               <a class="btn-primary" onclick="openBooking()">Book Now</a>
             </div>
           </div>
+          <!-- Family Suit Srinagar to Srinagar -->
           <div class="tour-card" data-aos="fade-up" data-aos-delay="400">
             <div class="tour-image">
               <img src="images/1767803335038.jpeg" alt="Tour" />
@@ -288,10 +324,16 @@
                 <span>6 Days / 5 Nights</span>
                 <span>₹9,999 per person</span>
               </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
               <p>Shikara ride 1 hour included</p>
               <a class="btn-primary" onclick="openBooking()">Book Now</a>
             </div>
           </div>
+          <!-- Ladakh + Srinagar Couple Package -->
           <div class="tour-card" data-aos="fade-up" data-aos-delay="500">
             <div class="tour-image">
               <img src="images/Lehladakh.jpeg" alt="Tour" />
@@ -299,7 +341,7 @@
             </div>
             <div class="tour-content">
               <h3>Ladakh + Srinagar Couple Package</h3>
-              <p>Ladakh & Srinagar, India</p>
+              <p>Ladakh &amp; Srinagar, India</p>
               <div class="tour-icons">
                 <span>✈️</span>
                 <span>🏨</span>
@@ -311,7 +353,44 @@
                 <span>7 Nights / 8 Days</span>
                 <span>₹55,000 per couple</span>
               </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
               <p>3 Nights in Ladakh, 4 Nights in Srinagar</p>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+          <!-- Gurez Valley Package (NEW) -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="tour-image">
+              <img src="images/1767803580261.jpeg" alt="Gurez Valley" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Gurez Valley Package</h3>
+              <p>Gurez &amp; Srinagar, Kashmir</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>6 Nights / 7 Days</span>
+                <span>₹39,999 per couple</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>2 Nights in Gurez<br />4 Nights in Srinagar</p>
+              <div class="tour-details">
+                <span>Family Suite: ₹13,999 per person</span>
+              </div>
               <a class="btn-primary" onclick="openBooking()">Book Now</a>
             </div>
           </div>
@@ -323,7 +402,7 @@
     <section class="adventure-cta" id="adventure">
       <div class="adventure-overlay"></div>
       <div class="container">
-        <h2 data-aos="fade-up"> Awaits</h2>
+        <h2 data-aos="fade-up">Awaits</h2>
         <p data-aos="fade-up" data-aos-delay="200">
           Experience the thrill of adventure
         </p>
@@ -333,7 +412,7 @@
             <h4>Wildlife Tours</h4>
           </div>
           <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="feature-icon">🪂</dAdventureiv>
+            <div class="feature-icon">🪂</div>
             <h4>Paragliding Tours</h4>
           </div>
           <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
@@ -410,7 +489,9 @@
           </div>
           <div class="footer-col">
             <h4>Tour Links</h4>
-            <a href="https://www.wasturwantravels.com" target="_blank">www.wasturwantravels.com</a>
+            <a href="https://www.wasturwantravels.com" target="_blank"
+              >www.wasturwantravels.com</a
+            >
             <p>Adventure Tours</p>
             <p>Family Tours</p>
           </div>
@@ -485,13 +566,31 @@
       </div>
     </div>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/917006594976" class="whatsapp-float" target="_blank">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-      />
-    </a>
+    <!-- Floating Social Buttons (WhatsApp & Instagram) -->
+    <div class="floating-social-stack">
+      <a
+        href="https://www.instagram.com/mudasir_8907?igsh=MWQ5Z3lsM2UwOXM5ZA=="
+        class="instagram-float"
+        target="_blank"
+        aria-label="Instagram"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+          alt="Instagram"
+        />
+      </a>
+      <a
+        href="https://wa.me/917006594976"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="WhatsApp"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+        />
+      </a>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
