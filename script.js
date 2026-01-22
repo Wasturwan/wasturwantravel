@@ -30,7 +30,6 @@ function openBooking() {
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
-
 function closeBooking() {
   const modal = document.getElementById("bookingModal");
   modal.classList.remove("active");
