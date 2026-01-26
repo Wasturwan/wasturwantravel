@@ -1,152 +1,721 @@
-// Initialize EmailJS
-emailjs.init("RPuODtzx4oLJPXBR3"); // Replace with your EmailJS public key
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wasturwan Travels</title>
 
-// Initialize AOS
-AOS.init({
-  duration: 800,
-  once: true,
-});
+    <meta
+      name="description"
+      content="Wasturwan Travels is a Kashmir-based travel agency offering tour packages, honeymoon trips, family vacations, and Ladakh tours."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.wasturwantravels.com/" />
 
-// Initialize Swiper
-const swiper = new Swiper('.hero-slider', {
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-// Modal functions
-function openBooking() {
-  const modal = document.getElementById("bookingModal");
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-function closeBooking() {
-  const modal = document.getElementById("bookingModal");
-  modal.classList.remove("active");
-  document.body.style.overflow = "auto";
-}
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
-// Close modal on outside click
-window.onclick = function(event) {
-  const modal = document.getElementById("bookingModal");
-  if (event.target == modal) {
-    closeBooking();
-  }
-}
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-// Smooth scrolling for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
+    <link rel="stylesheet" href="styles.css" />
 
-// Header scroll effect
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('.header');
-  if (window.scrollY > 100) {
-    header.style.background = 'rgba(255, 255, 255, 0.98)';
-    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-  } else {
-    header.style.background = 'rgba(255, 255, 255, 0.95)';
-    header.style.boxShadow = 'none';
-  }
-});
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
 
-// Form submission functions
-function sendViaEmail() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const destination = document.getElementById('destination').value;
-  const message = document.getElementById('message').value;
+  <body>
+    <!-- Top Info Bar -->
 
-  // EmailJS parameters - Replace with your actual IDs
-  const serviceID = "service_7wpca56"; // Replace with your EmailJS service ID
-  const templateID = "template_4525ddd"; // Replace with your EmailJS template ID
+    <!-- Header -->
+    <header class="header">
+      <div class="top_info">
+        <span style="display: flex; align-items: center">
+          Call us: +91 7006594976
+        </span>
+        <span>Email: wasturwantravels@gmail.com</span>
+      </div>
+      <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a
+            class="navbar-brand"
+            href="#"
+            style="display: flex; align-items: center; gap: 12px"
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                line-height: 1;
+                margin-right: 8px;
+              "
+            >
+              <span style="font-size: 20px; font-weight: 700; color: #0f1724"
+                >Wasturwan</span
+              >
+              <span style="font-size: 13px; font-weight: 600; color: #2563eb"
+                >Travels</span
+              >
+            </div>
+            <img src="images/NewLogo.png" alt="Logo" />
+            <img src="/images/BrandName.png" alt="" class="BrandName" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="headerMain">
+              <nav>
+                <a href="#home">Home</a>
+                <a href="#contact">About</a>
+                <a href="#tours">Tours</a>
+                <a href="Traveler.html">Traveler</a>
+                <a href="#contact">Contact</a>
+                <div class="book-btn-center">
+            <a
+              class="btn-primary"
+              onclick="openBooking()"
+              style="
+                padding: 8px 18px;
+                border-radius: 18px;
+                font-size: 14px;
+                font-weight: 600;
+                min-width: 120px;
+              "
+            >
+              Book Now
+            </a>
+          </div>
+              </nav>
+            </div>
+          </div>
+          
+        </div>
+      </nav>
+    </header>
 
-  const templateParams = {
-    from_name: name,
-    from_email: email,
-    destination: destination,
-    message: message,
-    to_email: 'wasturwantravels@gmail.com' // Replace with your email
-  };
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div
+              class="hero-slide"
+              style="background-image: url(&quot;images/Ladakh.jpeg&quot;)"
+            >
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-delay="200">
+                  Explore the Kashmir valley
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="400">
+                  Discover amazing destinations
+                </p>
+                <a
+                  class="btn-primary"
+                  href="#tours"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                  >View Packages</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="hero-slide"
+              style="background-image: url(&quot;images/Leh.jpeg&quot;)"
+            >
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-delay="200">
+                  Romantic Vacations in Kashmir!
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="400">
+                  Experience the thrill of travel
+                </p>
+                <a
+                  class="btn-primary"
+                  href="#tours"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                  >Explore Now</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="hero-slide"
+              style="background-image: url(&quot;images/Lehladakh.jpeg&quot;)"
+            >
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-delay="200">
+                  Your Journey Begins Here
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="400">
+                  Create unforgettable moments
+                </p>
+                <a
+                  class="btn-primary"
+                  href="#tours"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
+                  >Plan Trip</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
 
-  emailjs.send(serviceID, templateID, templateParams)
-    .then(function(response) {
-      alert('Email sent successfully!');
-      document.getElementById('bookingForm').reset(); // Auto reset form
-      closeBooking(); // Close modal after sending
-    }, function(error) {
-      alert('Failed to send email. Please try again.');
-      console.error('EmailJS error:', error);
-    });
-}
+    <!-- Holiday Categories -->
+    <section class="categories section" id="categories">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Holiday Categories</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">
+          Choose your perfect getaway
+        </p>
+        <div class="category-grid">
+          <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
+              alt="Adventure"
+            />
+            <div class="category-overlay">
+              <h3>Adventure Tours</h3>
+              <span>25 Tours</span>
+            </div>
+          </div>
+          <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+            <img
+              src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400"
+              alt="Honeymoon"
+            />
+            <div class="category-overlay">
+              <h3>Honeymoon Packages</h3>
+              <span>18 Tours</span>
+            </div>
+          </div>
+          <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+            <img
+              src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=400"
+              alt="Family"
+            />
+            <div class="category-overlay">
+              <h3>Family Tours</h3>
+              <span>32 Tours</span>
+            </div>
+          </div>
+          <div class="category-card" data-aos="fade-up" data-aos-delay="600">
+            <img
+              src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=400"
+              alt="Cultural"
+            />
+            <div class="category-overlay">
+              <h3>Cultural Tours</h3>
+              <span>15 Tours</span>
+            </div>
+          </div>
+          <div class="category-card" data-aos="fade-up" data-aos-delay="700">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
+              alt="Wildlife"
+            />
+            <div class="category-overlay">
+              <h3>Wildlife Safaris</h3>
+              <span>12 Tours</span>
+            </div>
+          </div>
+          <div class="category-card" data-aos="fade-up" data-aos-delay="800">
+            <img
+              src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400"
+              alt="Beach"
+            />
+            <div class="category-overlay">
+              <h3>Beach Holidays</h3>
+              <span>20 Tours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function sendViaWhatsApp() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const destination = document.getElementById('destination').value;
-  const message = document.getElementById('message').value;
+    <!-- Promotional Section -->
+    <section class="promo section" id="about">
+      <div class="container">
+        <div class="promo-content">
+          <div class="promo-text" data-aos="fade-right">
+            <h2>Special Discount</h2>
+            <p>
+              Get 20% off on all packages this season. Book now and save big on
+              your dream vacation.
+            </p>
+            <a class="btn-primary" onclick="openBooking()">Book Now</a>
+          </div>
+          <div class="promo-image" data-aos="fade-left">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600"
+              alt="Promo"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
-  const whatsappMessage = `Booking Request:\nName: ${name}\nEmail: ${email}\nDestination: ${destination}\nMessage: ${message}`;
-  const whatsappLink = `https://wa.me/917006594976?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappLink, '_blank');
-}
+    <!-- Most Popular Tours -->
+    <section class="tours section" id="tours">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Most Popular Tours</h2>
+        <div class="tour-grid">
+          <!-- Srinagar to Srinagar -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="tour-image">
+              <img src="images/1767803358391.jpeg" alt="Tour" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Srinagar to Srinagar</h3>
+              <p>Srinagar, Kashmir</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>5 Days / 4 Nights</span>
+                <span>₹24,999 per couple</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>Shikara ride 1 hour included</p>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+          <!-- Jammu to Jammu -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="tour-image">
+              <img src="images/Leh.jpeg" alt="Tour" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Jammu to Jammu</h3>
+              <p>Jammu, India</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>6 Days / 5 Nights</span>
+                <span>₹32,999 per couple</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>Shikara ride 1 hour included</p>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+          <!-- Family Suit Srinagar to Srinagar -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="tour-image">
+              <img src="images/1767803335038.jpeg" alt="Tour" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Family Suit Srinagar to Srinagar</h3>
+              <p>Srinagar, Kashmir</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>6 Days / 5 Nights</span>
+                <span>₹9,999 per person</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>Shikara ride 1 hour included</p>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+          <!-- Ladakh + Srinagar Couple Package -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="tour-image">
+              <img src="images/Lehladakh.jpeg" alt="Tour" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Ladakh + Srinagar Couple Package</h3>
+              <p>Ladakh &amp; Srinagar, India</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>7 Nights / 8 Days</span>
+                <span>₹55,000 per couple</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>3 Nights in Ladakh, 4 Nights in Srinagar</p>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+          <!-- Gurez Valley Package (NEW) -->
+          <div class="tour-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="tour-image">
+              <img src="images/1767803580261.jpeg" alt="Gurez Valley" />
+              <span class="featured">Featured</span>
+            </div>
+            <div class="tour-content">
+              <h3>Gurez Valley Package</h3>
+              <p>Gurez &amp; Srinagar, Kashmir</p>
+              <div class="tour-icons">
+                <span>✈️</span>
+                <span>🏨</span>
+                <span>🍽️</span>
+                <span>🚗</span>
+                <span>📸</span>
+              </div>
+              <div class="tour-details">
+                <span>6 Nights / 7 Days</span>
+                <span>₹39,999 per couple</span>
+              </div>
+              <ul class="accommodation-details">
+                <li>3-Star Hotel</li>
+                <li>Hot &amp; Cold AC Included</li>
+                <li>Dinner &amp; Breakfast Included</li>
+              </ul>
+              <p>2 Nights in Gurez<br />4 Nights in Srinagar</p>
+              <div class="tour-details">
+                <span>Family Suite: ₹13,999 per person</span>
+              </div>
+              <a class="btn-primary" onclick="openBooking()">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// ---------- Inspect Blocking (non-UI) ----------
-// Prevent right-click context menu across the site
-document.addEventListener('contextmenu', function (e) {
-  e.preventDefault();
-});
+    <!-- Adventure CTA -->
+    <section class="adventure-cta" id="adventure">
+      <div class="adventure-overlay"></div>
+      <div class="container">
+        <h2 data-aos="fade-up">Adventure Awaits</h2>
+        <p data-aos="fade-up" data-aos-delay="200">
+          Experience the thrill of adventure
+        </p>
+        <div class="adventure-features">
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">🦌</div>
+            <h4>Wildlife Tours</h4>
+          </div>
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">🪂</div>
+            <h4>Paragliding Tours</h4>
+          </div>
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-icon">🏔️</div>
+            <h4>Adventure Tours</h4>
+          </div>
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-icon">🪁</div>
+            <h4>Hang Gliding Tours</h4>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// Prevent common devtools / view-source / save shortcuts
-document.addEventListener('keydown', function (e) {
-  // F12
-  if (e.key === 'F12' || e.keyCode === 123) {
-    e.preventDefault();
-    return false;
-  }
+    <!-- Why Choose Us -->
+    <section class="why-choose section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Why Choose Us</h2>
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">👥</div>
+            <h3>Expert Guides</h3>
+            <p>Professional guides with years of experience</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">💰</div>
+            <h3>Best Prices</h3>
+            <p>Competitive pricing with no hidden costs</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">🛡️</div>
+            <h3>Safe Travel</h3>
+            <p>Your safety is our top priority</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-icon">⭐</div>
+            <h3>5-Star Service</h3>
+            <p>Exceptional service from start to finish</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / Ctrl+Shift+K
-  if (e.ctrlKey && e.shiftKey) {
-    const key = (e.key || '').toUpperCase();
-    if (key === 'I' || key === 'J' || key === 'C' || key === 'K') {
-      e.preventDefault();
-      return false;
-    }
-  }
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2 data-aos="fade-up">Ready for Your Next Adventure?</h2>
+        <a
+          class="btn-primary"
+          onclick="openBooking()"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          >Get Started</a
+        >
+      </div>
+    </section>
 
-  // Ctrl+U (view-source), Ctrl+S (save), Ctrl+Shift+S
-  if (e.ctrlKey) {
-    const key = (e.key || '').toUpperCase();
-    if (key === 'U' || key === 'S') {
-      e.preventDefault();
-      return false;
-    }
-  }
-});
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Support</h4>
+            <p>Help Center :- wasturwantravels@gmail.com</p>
+            <p>Contact Us :- Mudasir Mukhtar</p>
+            <p>+917006594976</p>
+          </div>
+          <div class="footer-col">
+            <h4>Address</h4>
+            <p>Wasturwan Travels</p>
+            <p>Ground floor, Pahal Brein</p>
+            <p>Nishat Road,Srinagar, J&K</p>
+            <p>Pin:- 191121</p>
+          </div>
+          <div class="footer-col">
+            <h4>Tour Links</h4>
+            <a href="https://www.wasturwantravels.com" target="_blank"
+              >www.wasturwantravels.com</a
+            >
+            <p>Adventure Tours</p>
+            <p>Family Tours</p>
+          </div>
+          <div class="footer-col">
+            <h4>Useful Links</h4>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#about">About</a></p>
+            <p><a href="#tours">Tours</a></p>
+            <p><a href="Traveler.html">Traveler</a></p>
+            <p><a href="#contact">Contact</a></p>
+            <p>Privacy Policy</p>
+            <p><a href="cancellation Policy.html">Cancellation Policy</a></p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="follow-us">
+            <h4>Follow Us</h4>
+            <div class="social-icons-row">
+              <a
+                href="https://www.instagram.com/mudasir_8907?igsh=MWQ5Z3lsM2UwOXM5ZA=="
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                  alt="Instagram"
+                  width="28"
+                  height="28"
+                />
+              </a>
+              <a
+                href="https://wa.me/917006594976"
+                target="_blank"
+                aria-label="WhatsApp"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                  alt="WhatsApp"
+                  width="28"
+                  height="28"
+                />
+              </a>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                aria-label="Facebook"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                  alt="Facebook"
+                  width="28"
+                  height="28"
+                />
+              </a>
+            </div>
+          </div>
+          <p>
+            &copy; 2026 Wasturwan Travels. All rights reserved. | Contact:
+            Mudasir Mukhtar
+          </p>
+        </div>
+      </div>
+    </footer>
 
-// Basic protection against text selection/context via mouse
-document.addEventListener('selectstart', function (e) {
-  e.preventDefault();
-});
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeBooking()">×</span>
+        <h2>Book Your Trip</h2>
+        <form id="bookingForm">
+          <input
+            type="text"
+            id="name"
+            name="Name"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="Your Email"
+            required
+          />
+          <input
+            type="text"
+            id="destination"
+            name="Destination"
+            placeholder="Destination"
+          />
+          <textarea
+            id="message"
+            name="Message"
+            placeholder="Message"
+          ></textarea>
+          <button type="button" class="btn-primary" onclick="sendViaEmail()">
+            Send via Email
+          </button>
+          <button type="button" class="btn-primary" onclick="sendViaWhatsApp()">
+            Send via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
 
-// Note: These measures make casual inspection harder but cannot fully prevent developer tools access.
+    <!-- Floating Social Buttons (WhatsApp & Instagram) -->
+    <div class="floating-social-stack">
+      <a
+        href="https://wa.me/917006594976"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="WhatsApp"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+        />
+      </a>
+    </div>
+
+    <div class="social-instagram">
+      <a
+        href="https://www.instagram.com/mudasir_8907?igsh=MWQ5Z3lsM2UwOXM5ZA=="
+        target="_blank"
+        aria-label="Instagram"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+          alt="Instagram"
+        />
+      </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Wasturwan Travels",
+        "url": "https://www.wasturwantravels.com",
+        "telephone": "+91-7006594976",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Srinagar",
+          "addressRegion": "Jammu and Kashmir",
+          "addressCountry": "IN"
+        }
+      }
+    </script>
+    <div id="bookingModal" class="modal">
+      <div class="modal-content">
+        <span onclick="closeBooking()" class="close">&times;</span>
+
+        <h2>Book Package</h2>
+
+        <form id="bookingForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="text" id="destination" placeholder="Destination" />
+          <textarea id="message" placeholder="Message"></textarea>
+
+          <button type="button" onclick="sendViaWhatsApp()">
+            Send via WhatsApp
+          </button>
+          <button type="button" onclick="sendViaEmail()">Send via Email</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+</html>
