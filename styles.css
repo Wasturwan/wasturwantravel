@@ -519,6 +519,57 @@ body {
   padding: 15px 20px;
 }
 
+/* Keep full header in a single row: apply flex to the navbar container-fluid
+   This ensures logo+name, nav, and book button stay aligned on one row. */
+.header .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.headerMain {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.headerMain nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.book-btn-center {
+  display: flex;
+  align-items: center;
+}
+
+/* On small screens keep logo and book button visible; let nav collapse as needed */
+@media (max-width: 992px) {
+  .header .container-fluid {
+    gap: 12px;
+  }
+  .headerMain nav {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .container-fluid {
+    align-items: center;
+  }
+  .headerMain {
+    width: 100%;
+    justify-content: center;
+  }
+  /* Ensure book button remains visible at right */
+  .book-btn-center {
+    margin-left: 12px;
+  }
+}
+
 .logo {
   font-size: 28px;
   font-weight: 700;
@@ -576,6 +627,29 @@ body {
   /* transform: translateY(-2px); */
   color: orange;
   box-shadow: 0 10px 20px var(--shadow);
+}
+
+/* Make header Book Now look like the reference (bigger pill with strong shadow)
+   Keep this scoped to header to avoid changing other buttons */
+.header .btn-primary {
+  padding: 14px 34px;
+  border-radius: 38px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--light);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.18);
+  border: 2px solid rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+}
+
+.header .btn-primary:hover {
+  transform: translateY(-3px);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(16, 24, 40, 0.22);
 }
 
 /* Hero Section */
@@ -1414,5 +1488,9 @@ body {
 .modal.active {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.book-btn-center {
+  display: flex;
   justify-content: center;
 }
