@@ -1,13 +1,13 @@
-// Initialize EmailJS
-emailjs.init("RPuODtzx4oLJPXBR3"); // Replace with your EmailJS public key
+//  EmailJS
+emailjs.init("RPuODtzx4oLJPXBR3"); 
 
-// Initialize AOS
+//  AOS
 AOS.init({
   duration: 800,
   once: true,
 });
 
-// Initialize Swiper
+//  Swiper
 const swiper = new Swiper('.hero-slider', {
   loop: true,
   autoplay: {
@@ -70,30 +70,81 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// Prefill booking form when a "Book Now" inside a tour card is clicked
+
+document.addEventListener('click', function (e) {
+  try {
+    const btn = e.target.closest && e.target.closest('.btn-primary');
+    if (!btn) return; 
+
+    // Only act when the button is inside a tour card
+    const card = btn.closest && btn.closest('.tour-card');
+    if (!card) return;
+
+    // Extract package details from the card
+    const titleEl = card.querySelector('h3');
+    const title = titleEl ? titleEl.textContent.trim() : '';
+
+    // duration and price are typically in .tour-details spans
+    let duration = '';
+    let price = '';
+    const detailSpans = card.querySelectorAll('.tour-details span');
+    if (detailSpans && detailSpans.length > 0) {
+      duration = detailSpans[0].textContent.trim();
+      if (detailSpans.length > 1) price = detailSpans[1].textContent.trim();
+    }
+
+    
+    const destEl = card.querySelector('.tour-content > p') || card.querySelector('p');
+    const destinationText = destEl ? destEl.textContent.trim() : '';
+
+    
+    const parts = [];
+    if (title) parts.push(title);
+    if (duration) parts.push(duration);
+    if (price) parts.push(price);
+    if (destinationText) parts.push(destinationText);
+    const summary = parts.join(' | ');
+
+    if (summary) {
+      
+      document.querySelectorAll('#destination').forEach(function (input) {
+        try { input.value = summary; } catch (err) { /*  */ }
+      });
+    }
+  } catch (err) {
+    
+    console.error('Prefill booking error:', err);
+  }
+}, true);
+
 // Form submission functions
 function sendViaEmail() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const destination = document.getElementById('destination').value;
+  const travelDateEl = document.getElementById('travelDate');
+  const travelDate = travelDateEl ? travelDateEl.value : '';
   const message = document.getElementById('message').value;
 
-  // EmailJS parameters - Replace with your actual IDs
-  const serviceID = "service_7wpca56"; // Replace with your EmailJS service ID
-  const templateID = "template_4525ddd"; // Replace with your EmailJS template ID
+  // EmailJS parameters 
+  const serviceID = "service_7wpca56"; 
+  const templateID = "template_4525ddd"; 
 
   const templateParams = {
     from_name: name,
     from_email: email,
     destination: destination,
+    travel_date: travelDate,
     message: message,
-    to_email: 'wasturwantravels@gmail.com' // Replace with your email
+    to_email: 'wasturwantravels@gmail.com' 
   };
 
   emailjs.send(serviceID, templateID, templateParams)
     .then(function(response) {
       alert('Email sent successfully!');
-      document.getElementById('bookingForm').reset(); // Auto reset form
-      closeBooking(); // Close modal after sending
+      document.getElementById('bookingForm').reset(); 
+      closeBooking(); 
     }, function(error) {
       alert('Failed to send email. Please try again.');
       console.error('EmailJS error:', error);
@@ -104,28 +155,28 @@ function sendViaWhatsApp() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const destination = document.getElementById('destination').value;
+  const travelDateEl = document.getElementById('travelDate');
+  const travelDate = travelDateEl ? travelDateEl.value : '';
   const message = document.getElementById('message').value;
-
-  const whatsappMessage = `Booking Request:\nName: ${name}\nEmail: ${email}\nDestination: ${destination}\nMessage: ${message}`;
+  const whatsappMessage = `Booking Request:\nName: ${name}\nEmail: ${email}\nDestination: ${destination}\nTravel Date: ${travelDate}\nMessage: ${message}`;
   const whatsappLink = `https://wa.me/917006594976?text=${encodeURIComponent(whatsappMessage)}`;
   window.open(whatsappLink, '_blank');
 }
 
-// ---------- Inspect Blocking (non-UI) ----------
-// Prevent right-click context menu across the site
+
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
 });
 
-// Prevent common devtools / view-source / save shortcuts
+
 document.addEventListener('keydown', function (e) {
-  // F12
+  
   if (e.key === 'F12' || e.keyCode === 123) {
     e.preventDefault();
-    return false;
+   return false;
   }
 
-  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / Ctrl+Shift+K
+  
   if (e.ctrlKey && e.shiftKey) {
     const key = (e.key || '').toUpperCase();
     if (key === 'I' || key === 'J' || key === 'C' || key === 'K') {
@@ -134,7 +185,7 @@ document.addEventListener('keydown', function (e) {
     }
   }
 
-  // Ctrl+U (view-source), Ctrl+S (save), Ctrl+Shift+S
+  
   if (e.ctrlKey) {
     const key = (e.key || '').toUpperCase();
     if (key === 'U' || key === 'S') {
@@ -144,9 +195,9 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// Basic protection against text selection/context via mouse
+
 document.addEventListener('selectstart', function (e) {
   e.preventDefault();
 });
 
-// Note: These measures make casual inspection harder but cannot fully prevent developer tools access.
+
