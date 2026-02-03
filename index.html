@@ -46,7 +46,7 @@
         <span style="display: flex; align-items: center">
           Call us: +91 7006594976
         </span>
-        <span>Email: Info@wasturwantravels.com</span>
+        <span>Email: wasturwantravels@gmail.com</span>
       </div>
       <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -93,24 +93,23 @@
                 <a href="Traveler.html">Traveler</a>
                 <a href="#contact">Contact</a>
                 <div class="book-btn-center">
-            <a
-              class="btn-primary"
-              onclick="openBooking()"
-              style="
-                padding: 8px 18px;
-                border-radius: 18px;
-                font-size: 14px;
-                font-weight: 600;
-                min-width: 120px;
-              "
-            >
-              Book Now
-            </a>
-          </div>
+                  <a
+                    class="btn-primary"
+                    onclick="openBooking()"
+                    style="
+                      padding: 8px 18px;
+                      border-radius: 18px;
+                      font-size: 14px;
+                      font-weight: 600;
+                      min-width: 120px;
+                    "
+                  >
+                    Book Now
+                  </a>
+                </div>
               </nav>
             </div>
           </div>
-          
         </div>
       </nav>
     </header>
@@ -524,7 +523,7 @@
         <div class="footer-grid">
           <div class="footer-col">
             <h4>Support</h4>
-            <p>Help Center :- Info@wasturwantravels.com</p>
+            <p>Help Center :- wasturwantravels@gmail.com</p>
             <p>Contact Us :- Mudasir Mukhtar</p>
             <p>+917006594976</p>
           </div>
@@ -630,6 +629,12 @@
             name="Destination"
             placeholder="Destination"
           />
+          <input
+            type="date"
+            id="travelDate"
+            name="Travel Date"
+            placeholder="Travel Date"
+          />
           <textarea
             id="message"
             name="Message"
@@ -703,6 +708,12 @@
           <input type="text" id="name" placeholder="Your Name" required />
           <input type="email" id="email" placeholder="Email" required />
           <input type="text" id="destination" placeholder="Destination" />
+          <input
+            type="date"
+            id="travelDate"
+            name="Travel Date"
+            placeholder="Travel Date"
+          />
           <textarea id="message" placeholder="Message"></textarea>
 
           <button type="button" onclick="sendViaWhatsApp()">
