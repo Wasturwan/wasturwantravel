@@ -70,22 +70,20 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Prefill booking form when a "Book Now" inside a tour card is clicked
-
 document.addEventListener('click', function (e) {
   try {
     const btn = e.target.closest && e.target.closest('.btn-primary');
     if (!btn) return; 
 
-    // Only act when the button is inside a tour card
+    
     const card = btn.closest && btn.closest('.tour-card');
     if (!card) return;
 
-    // Extract package details from the card
+    
     const titleEl = card.querySelector('h3');
     const title = titleEl ? titleEl.textContent.trim() : '';
 
-    // duration and price are typically in .tour-details spans
+    
     let duration = '';
     let price = '';
     const detailSpans = card.querySelectorAll('.tour-details span');
@@ -143,8 +141,7 @@ function sendViaEmail() {
   emailjs.send(serviceID, templateID, templateParams)
     .then(function(response) {
       alert('Email sent successfully!');
-      document.getElementById('bookingForm').reset(); 
-      closeBooking(); 
+      resetBookingFormsAndClose();
     }, function(error) {
       alert('Failed to send email. Please try again.');
       console.error('EmailJS error:', error);
@@ -161,6 +158,27 @@ function sendViaWhatsApp() {
   const whatsappMessage = `Booking Request:\nName: ${name}\nEmail: ${email}\nDestination: ${destination}\nTravel Date: ${travelDate}\nMessage: ${message}`;
   const whatsappLink = `https://wa.me/917006594976?text=${encodeURIComponent(whatsappMessage)}`;
   window.open(whatsappLink, '_blank');
+  resetBookingFormsAndClose();
+}
+
+
+function resetBookingFormsAndClose() {
+  try {
+    const activeModals = document.querySelectorAll('.modal.active');
+    if (activeModals && activeModals.length > 0) {
+      activeModals.forEach(function(modal) {
+        modal.querySelectorAll('form').forEach(function(f){ try { f.reset(); } catch(e){} });
+        modal.classList.remove('active');
+      });
+      document.body.style.overflow = 'auto';
+      return;
+    }
+  } catch (err) { /*  */ }
+
+  
+  try { document.querySelectorAll('#bookingForm').forEach(function(f){ try { f.reset(); } catch(e){} }); } catch(e){}
+  try { document.querySelectorAll('#bookingModal').forEach(function(m){ m.classList.remove('active'); }); } catch(e){}
+  try { document.body.style.overflow = 'auto'; } catch(e){}
 }
 
 
@@ -199,4 +217,3 @@ document.addEventListener('keydown', function (e) {
 document.addEventListener('selectstart', function (e) {
   e.preventDefault();
 });
-
