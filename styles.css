@@ -3,16 +3,16 @@
   display: flex;
   flex-direction: row;
 
-  /* Floating Social Buttons Container */
+  
   .floating-social-stack {
     position: fixed;
     bottom: 20px;
     right: 20px;
     display: flex;
     flex-direction: column;
-    /* stack vertically */
+    
     gap: 12px;
-    /* GAP BETWEEN BUTTONS */
+    
     z-index: 9999;
   }
 
@@ -92,10 +92,7 @@
   border-radius: 6px;
 }
 
-/* WhatsApp and Instagram floating button responsive */
-/* Floating WhatsApp and Instagram buttons */
-/* Floating WhatsApp and Instagram buttons - improved responsive */
-/* Floating Social Buttons Container */
+
 .floating-social-stack {
   position: fixed;
   z-index: 1000;
@@ -359,9 +356,7 @@
     margin-bottom: 8px;
   }
 
-  /* nav {
-    width: 100%;
-  }  */
+  
   
 }
 
@@ -519,8 +514,7 @@ body {
   padding: 15px 20px;
 }
 
-/* Keep full header in a single row: apply flex to the navbar container-fluid
-   This ensures logo+name, nav, and book button stay aligned on one row. */
+
 .header .container-fluid {
   display: flex;
   align-items: center;
@@ -546,7 +540,7 @@ body {
   align-items: center;
 }
 
-/* On small screens keep logo and book button visible; let nav collapse as needed */
+
 @media (max-width: 992px) {
   .header .container-fluid {
     gap: 12px;
@@ -564,7 +558,7 @@ body {
     width: 100%;
     justify-content: center;
   }
-  /* Ensure book button remains visible at right */
+  
   .book-btn-center {
     margin-left: 12px;
   }
@@ -624,13 +618,12 @@ body {
 }
 
 .btn-primary:hover {
-  /* transform: translateY(-2px); */
+  
   color: orange;
   box-shadow: 0 10px 20px var(--shadow);
 }
 
-/* Make header Book Now look like the reference (bigger pill with strong shadow)
-   Keep this scoped to header to avoid changing other buttons */
+
 .header .btn-primary {
   padding: 14px 34px;
   border-radius: 38px;
@@ -699,7 +692,7 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Swiper Styles */
+
 .swiper-pagination {
   bottom: 30px !important;
 }
@@ -727,12 +720,12 @@ body {
   font-size: 18px;
 }
 
-/* Section */
+
 .section {
   padding: 80px 0;
 }
 
-/* Categories */
+
 .categories {
   background: var(--light);
 }
@@ -803,7 +796,7 @@ body {
   opacity: 0.8;
 }
 
-/* Promo Section */
+
 .promo {
   background: #f9f9f9;
 }
@@ -832,7 +825,7 @@ body {
   box-shadow: 0 10px 30px var(--shadow);
 }
 
-/* Tours */
+
 .tours {
   background: var(--light);
 }
@@ -917,7 +910,7 @@ body {
   color: var(--primary);
 }
 
-/* Adventure CTA */
+
 .adventure-cta {
   background: url('images/yasser-mir-iMnIu-GoEeE-unsplash-1.jpg') center/cover;
   position: relative;
@@ -976,7 +969,7 @@ body {
   font-weight: 600;
 }
 
-/* Why Choose Us */
+
 .why-choose {
   background: var(--dark);
   color: var(--light);
@@ -1015,7 +1008,7 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Final CTA */
+
 .final-cta {
   background: var(--primary);
   padding: 60px 0;
@@ -1084,7 +1077,7 @@ body {
   font-size: 20px;
 }
 
-/* Modal */
+
 .modal {
   position: fixed;
   inset: 0;
@@ -1219,7 +1212,7 @@ body {
   }
 }
 
-/* Cancellation Policy Page */
+
 .page-content {
   padding: 100px 0 50px;
 }
@@ -1265,7 +1258,7 @@ body {
   text-decoration: underline;
 }
 
-/* Redesigned footer styles (keeps overall site UI intact) */
+
 .footer {
   background: #0f1724;
   color: #e6eef8;
@@ -1364,7 +1357,7 @@ body {
   }
 }
 
-/* Social icon image sizing inside footer */
+
 .social-icons-row img {
   width: 26px;
   height: 26px;
@@ -1381,7 +1374,7 @@ body {
 
 
 
-/* Usama Code */
+
 .navbar-brand {
   margin-right: 0 !important;
   padding-top: 0 !important;
